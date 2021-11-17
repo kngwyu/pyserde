@@ -696,7 +696,7 @@ convert_sets=convert_sets), foo[2],)"
         """
         Render rvalue for primitives.
         """
-        return f'{arg.varname}'
+        return f'{typename(arg.type)}({arg.varname})'
 
     def string(self, arg: SeField) -> str:
         return f"str({arg.varname})"

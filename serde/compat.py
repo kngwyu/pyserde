@@ -114,6 +114,11 @@ def typename(typ) -> str:
     elif typ is Any:
         return 'Any'
     else:
+        # Get super type for NewType
+        inner = getattr(typ, '__supertype__', None)
+        if inner:
+            return typename(typ.__supertype__)
+
         name = getattr(typ, '_name', None)
         if name:
             return name
